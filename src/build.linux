@@ -4,11 +4,9 @@
 DEVHOME=/Users/ross/Documents/workspace/graphs
 VERBOSE=false
 CLASSES="Main.java"
-ALL_ADT_CLASSES="DictionaryInterface.java HeapPriorityQueue.java LinkedListWithIterator.java LinkedStack.java ListWithIteratorInterface.java MaxHeapInterface.java QueueInterface.java EmptyQueueException.java LinkedDictionary.java LinkedQueue.java ListInterface.java MaxHeap.java PriorityQueueInterface.java StackInterface.java"
-ALL_GRAPH_CLASSES="BasicGraphInterface.java DirectedGraph.java GraphAlgorithmsInterface.java GraphInterface.java UndirectedGraph.java Vertex.java VertexInterface.java"
-GRAPH_CLASSES="DirectedGraph.java"
+ALL_CLASSES="DictionaryInterface.java HeapPriorityQueue.java LinkedListWithIterator.java LinkedStack.java ListWithIteratorInterface.java MaxHeapInterface.java QueueInterface.java EmptyQueueException.java LinkedDictionary.java LinkedQueue.java ListInterface.java MaxHeap.java PriorityQueueInterface.java StackInterface.java BasicGraphInterface.java DirectedGraph.java GraphAlgorithmsInterface.java GraphInterface.java UndirectedGraph.java Vertex.java VertexInterface.java"
 TESTER="Main"
-PKG="Main"
+PKG="GraphPackage"
 STANDALONE_TESTER=""
 MAKE_SA_TEST=0
 
@@ -23,24 +21,16 @@ if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
 if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
 if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
 
-#for CLASS in $ALL_ADT_CLASSES
-#do
-#    echo "Building $CLASS..."
-#    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/ADTPackage/$CLASS
-#done
-
-#for CLASS in $ALL_GRAPH_CLASSES
-#do
-#    echo "Building $CLASS..."
-#    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/GraphPackage/$CLASS
-#done
-
-SRCDIR=$DEVHOME/src/$PKG
+for CLASS in $ALL_CLASSES
+do
+    echo "Building $CLASS..."
+#    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$PKG/$CLASS
+done
 
 for CLASS in $CLASSES
 do
     echo "Building $CLASS..."
-    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$CLASS
+    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$PKG/$CLASS
 done
 
 java -ea -cp .:$BINDIR:$LIBDIR $PKG.$TESTER

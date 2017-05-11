@@ -139,14 +139,14 @@ public class DirectedGraph<T> implements GraphInterface<T>
      
 	   VertexInterface<T> originVertex = vertices.getValue(origin);
       originVertex.visit();
-	   traversalOrder.enqueue(origin);    // Enqueue vertex label
+	   traversalOrder.enqueue(origin);    
 	   vertexStack.push(originVertex); 
 	  
 	   while (!vertexStack.isEmpty())
 	   {
-	      VertexInterface<T> frontVertex = vertexStack.pop();
+	      VertexInterface<T> topVertex = vertexStack.peek();
 	    
-	      Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+	      Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
 	      while (neighbors.hasNext())
 	      {
 	         VertexInterface<T> nextNeighbor = neighbors.next();
@@ -157,6 +157,7 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	            vertexStack.push(nextNeighbor);
 	         } // end if
 	      } // end while
+         vertexStack.pop();         
 	   } // end while
 	  
 	   return traversalOrder;
