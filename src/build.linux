@@ -4,8 +4,9 @@
 DEVHOME=/Users/ross/Documents/workspace/graphs
 VERBOSE=false
 CLASSES="Main.java"
-ADT_CLASSES="DictionaryInterface.java       HeapPriorityQueue.java         LinkedListWithIterator.java    LinkedStack.java               ListWithIteratorInterface.java MaxHeapInterface.java          QueueInterface.java EmptyQueueException.java       LinkedDictionary.java          LinkedQueue.java               ListInterface.java             MaxHeap.java                   PriorityQueueInterface.java    StackInterface.java"
-GRAPH_CLASSES="BasicGraphInterface.java      DirectedGraph.java            GraphAlgorithmsInterface.java GraphInterface.java           UndirectedGraph.java          Vertex.java                   VertexInterface.java"
+ALL_ADT_CLASSES="DictionaryInterface.java HeapPriorityQueue.java LinkedListWithIterator.java LinkedStack.java ListWithIteratorInterface.java MaxHeapInterface.java QueueInterface.java EmptyQueueException.java LinkedDictionary.java LinkedQueue.java ListInterface.java MaxHeap.java PriorityQueueInterface.java StackInterface.java"
+ALL_GRAPH_CLASSES="BasicGraphInterface.java DirectedGraph.java GraphAlgorithmsInterface.java GraphInterface.java UndirectedGraph.java Vertex.java VertexInterface.java"
+GRAPH_CLASSES="DirectedGraph.java"
 TESTER="Main"
 PKG="Main"
 STANDALONE_TESTER=""
@@ -22,13 +23,15 @@ if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
 if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
 if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
 
-#for CLASS in $ADT_CLASSES
+#for CLASS in $ALL_ADT_CLASSES
 #do
+#    echo "Building $CLASS..."
 #    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/ADTPackage/$CLASS
 #done
 
-#for CLASS in $GRAPH_CLASSES
+#for CLASS in $ALL_GRAPH_CLASSES
 #do
+#    echo "Building $CLASS..."
 #    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/GraphPackage/$CLASS
 #done
 
@@ -36,12 +39,13 @@ SRCDIR=$DEVHOME/src/$PKG
 
 for CLASS in $CLASSES
 do
+    echo "Building $CLASS..."
     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$CLASS
 done
 
 java -ea -cp .:$BINDIR:$LIBDIR $PKG.$TESTER
 
-#if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
+if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
@@ -57,7 +61,7 @@ java -ea -cp .:$BINDIR:$LIBDIR $PKG.$TESTER
     COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG bin/$PKG 
     ls -l tgz/$PKG-$VS.tgz
     popd >/dev/null 2>&1
-#fi
+fi
 
 
 
