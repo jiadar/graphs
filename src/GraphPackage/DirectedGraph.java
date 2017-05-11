@@ -148,10 +148,9 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	      Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
 
          // if top vertex has an unvisited neighbor
-    
-         if (neighbors.hasNext()) {
-            VertexInterface<T> nextNeighbor = neighbors.next();
-            if (!nextNeighbor.isV)
+         VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
+         
+         if (nextNeighbor != null) {
             nextNeighbor.visit();
             traversalOrder.enqueue(nextNeighbor.getLabel());
             vertexStack.push(nextNeighbor);
