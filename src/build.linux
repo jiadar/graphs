@@ -22,15 +22,15 @@ if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
 if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
 if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
 
-for CLASS in $ADT_CLASSES
-do
-    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/ADTPackage/$CLASS
-done
+#for CLASS in $ADT_CLASSES
+#do
+#    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/ADTPackage/$CLASS
+#done
 
-for CLASS in $GRAPH_CLASSES
-do
-    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/GraphPackage/$CLASS
-done
+#for CLASS in $GRAPH_CLASSES
+#do
+#    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/GraphPackage/$CLASS
+#done
 
 SRCDIR=$DEVHOME/src/$PKG
 
