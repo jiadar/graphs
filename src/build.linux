@@ -35,7 +35,7 @@ done
 
 java -ea -cp .:$BINDIR:$LIBDIR $PKG.$TESTER
 
-if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
+#if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
     pushd $SRCDIR >/dev/null 2>&1
     git add -u 
     git commit -m "Auto commit"
@@ -51,7 +51,7 @@ if test "$(find $SRCDIR/.timestamp -mmin +15)" ; then
     COPYFILE_DISABLE=1 tar czf tgz/$PKG-$VS.tgz  src/$PKG bin/$PKG 
     ls -l tgz/$PKG-$VS.tgz
     popd >/dev/null 2>&1
-fi
+#fi
 
 
 

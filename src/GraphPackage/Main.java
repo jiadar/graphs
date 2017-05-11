@@ -52,7 +52,7 @@ public class Main // Undirected, weighted
       System.out.print("\nThe cheapest path from " + vertex1 + " to " + vertex2 + " is ");
       double cost = myGraph.getCheapestPath(vertex1, vertex2, path);
       displayStack(path);
-      System.out.println("and has a cost of " + cost + ".");
+
    } // end showPath
 
    private static void setBartGraph()
@@ -73,10 +73,7 @@ public class Main // Undirected, weighted
       myGraph.addVertex(L);
       myGraph.addVertex(M);
       myGraph.addVertex(N);
-   }
 
-   private static void setEdgesFig28_18aUndirected()
-   {
       myGraph.addEdge(A,B,1);
       myGraph.addEdge(B,C,1);
       myGraph.addEdge(C,D,1);
@@ -105,12 +102,15 @@ public class Main // Undirected, weighted
       myGraph.addEdge(H,G,1);
       myGraph.addEdge(I,G,1);
 
+      myGraph.addEdge(E,K,1);
+      myGraph.addEdge(K,E,1);
+
    } 
 
    public static void displayStack(StackInterface<String> s)
    {
       while (!s.isEmpty())
-         System.out.print(s.pop() + " ");
+         System.out.print(s.pop() + ", ");
 
       assert(s.isEmpty());
    } // end displayStack
