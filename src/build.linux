@@ -34,7 +34,7 @@ if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
 
 SRCDIR=$DEVHOME/src/$PKG
 
-for CLASS in $TESTER
+for CLASS in $CLASSES
 do
     javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$CLASS
 done
