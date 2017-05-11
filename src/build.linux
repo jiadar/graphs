@@ -3,7 +3,7 @@
 # User Configurable 
 DEVHOME=/Users/ross/Documents/workspace/graphs
 VERBOSE=false
-CLASSES="Main.java"
+CLASSES="Main.java DirectedGraph.java"
 ALL_CLASSES="DictionaryInterface.java HeapPriorityQueue.java LinkedListWithIterator.java LinkedStack.java ListWithIteratorInterface.java MaxHeapInterface.java QueueInterface.java EmptyQueueException.java LinkedDictionary.java LinkedQueue.java ListInterface.java MaxHeap.java PriorityQueueInterface.java StackInterface.java BasicGraphInterface.java DirectedGraph.java GraphAlgorithmsInterface.java GraphInterface.java UndirectedGraph.java Vertex.java VertexInterface.java"
 TESTER="Main"
 PKG="GraphPackage"
@@ -21,11 +21,11 @@ if [ ! -d $BINDIR ] ; then mkdir -p $BINDIR ; fi
 if [ ! -d $DOCDIR ] ; then mkdir -p $DOCDIR ; fi
 if [ ! -f $SRCDIR/.timestamp ] ; then touch $SRCDIR/.timestamp ; fi
 
-for CLASS in $ALL_CLASSES
-do
-    echo "Building $CLASS..."
+#for CLASS in $ALL_CLASSES
+#do
+#    echo "Building $CLASS..."
 #    javac -cp .:$BINDIR:$LIBDIR -d $BINDIR $SRCDIR/$PKG/$CLASS
-done
+#done
 
 for CLASS in $CLASSES
 do
