@@ -1,6 +1,6 @@
 package GraphPackage;
 import java.util.Iterator;
-import ADTPackage.*; // Classes that implement various ADTs
+
 /**
    A class that implements the ADT directed graph.
    
@@ -145,21 +145,21 @@ public class DirectedGraph<T> implements GraphInterface<T>
 	   while (!vertexStack.isEmpty())
 	   {
 	      VertexInterface<T> topVertex = vertexStack.peek();
-	    
 	      Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
-	      while (neighbors.hasNext())
-	      {
-	         VertexInterface<T> nextNeighbor = neighbors.next();
-	         if (!nextNeighbor.isVisited())
-	         {
-	            nextNeighbor.visit();
-	            traversalOrder.enqueue(nextNeighbor.getLabel());
-	            vertexStack.push(nextNeighbor);
-	         } // end if
-	      } // end while
-         vertexStack.pop();         
-	   } // end while
-	  
+
+         // if top vertex has an unvisited neighbor
+    
+         if (neighbors.hasNext()) {
+            VertexInterface<T> nextNeighbor = neighbors.next();
+            if (!nextNeighbor.isV)
+            nextNeighbor.visit();
+            traversalOrder.enqueue(nextNeighbor.getLabel());
+            vertexStack.push(nextNeighbor);
+         }
+         else { 
+            vertexStack.pop();
+         }
+      }	  
 	   return traversalOrder;
    }
     
